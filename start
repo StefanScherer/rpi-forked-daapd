@@ -1,0 +1,8 @@
+#!/bin/sh
+
+ruby -rerb -e 'ERB.new($stdin.read).run(binding)' < /etc/forked-daapd.conf.erb > /etc/forked-daapd.conf
+/etc/init.d/dbus start
+/etc/init.d/avahi-daemon start
+/usr/sbin/forked-daapd -f -c /etc/forked-daapd.conf
+/etc/init.d/avahi-daemon stop
+/etc/init.d/dbus stop
