@@ -19,8 +19,6 @@ This directory tree is also used for the pairing files `*.remote`
 The forked-daapd server stores its data and minipics in a sqlite database. This should be stored outside of the container. Add a
 `-v /path/to/dbfiles/stored/on/your/host:/var/cache/forked-daapd` switch.
 
-As the iTunes server depends on mDNS / avahi we need to start the container with connection to the host's network interface.
-
 ## Build the container
 
 ```bash
@@ -28,6 +26,8 @@ docker build -t forked-daapd .
 ```
 
 ## Run the container
+
+As the iTunes server depends on mDNS / avahi we need to start the container with connection to the host's network interface.
 
 ```bash
 docker run -d --net host --name forked-daapd -v /home/media:/media -e DAAPD_NAME=Dockerized -v /home/localdb:/var/cache/forked-daapd forked-daapd
