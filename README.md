@@ -4,8 +4,8 @@ Run an iTunes server on your Raspberry Pi in a Docker container.
 
 ## Container variables
 
-DAAPD_NAME - name of the iTunes server, default 'My music on %h'
-DAAPD_PORT - port used, default 3689
+* **DAAPD_NAME** - name of the iTunes server, default 'My music on %h'
+* **DAAPD_PORT** - port used, default 3689
 
 ## Container volumes
 
