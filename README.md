@@ -44,3 +44,7 @@ docker run -d --net host --name forked-daapd -v /home/media:/media -e DAAPD_NAME
    * save the file
 5. Now the iOS device is paired with the iTunes server.
 
+## Acknowledgements
+
+Many thanks to John Bintz's repo https://github.com/johnbintz/johns-docker-stuff for inspiration.
+
