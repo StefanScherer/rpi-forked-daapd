@@ -21,13 +21,26 @@ The forked-daapd server stores its data and minipics in a sqlite database. This 
 
 As the iTunes server depends on mDNS / avahi we need to start the container with connection to the host's network interface.
 
+## Build the container
+
+```bash
+docker build -t forked-daapd .
+```
+
 ## Run the container
 
 ```bash
-docker run -d -p 3689:3689 --net host -v /home/media:/media -e DAAPD_NAME=Dockerized -v /home/localdb:/var/cache/forked-daapd forked-daapd
+docker run -d --net host --name forked-daapd -v /home/media:/media -e DAAPD_NAME=Dockerized -v /home/localdb:/var/cache/forked-daapd forked-daapd
 ```
 
-```bash
-avahi-browse -r -k _touch-remote._tcp
-```
+## Pair your iOS device with the iTunes server
+
+1. Download the Remote app from the App Store.
+2. Add a new iTunes-Mediathek, a four digit code will appear.
+3. Now watch the output of the container with `docker logs forked-daapd`
+4. Edit a file in your media folder on the host machine.
+   * Put the name of the iOS device in the first line
+   * Put the four digit code into the second line
+   * save the file
+5. Now the iOS device is paired with the iTunes server.
 
